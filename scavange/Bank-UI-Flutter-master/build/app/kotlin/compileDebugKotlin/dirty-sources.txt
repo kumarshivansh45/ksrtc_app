@@ -1,0 +1,1 @@
+C:\Users\Asus\Desktop\ksrtc app\scavange\Bank-UI-Flutter-master\android\app\src\main\kotlin\com\mgogolowicz\bank_ui\MainActivity.kt
