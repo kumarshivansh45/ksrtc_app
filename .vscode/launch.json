@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "ksrtc_flutter",
+            "cwd": "ksrtc_flutter",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "ksrtc_flutter (profile mode)",
+            "cwd": "ksrtc_flutter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "ksrtc_flutter (release mode)",
+            "cwd": "ksrtc_flutter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "Bank-UI-Flutter-master",
+            "cwd": "scavange\\Bank-UI-Flutter-master",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Bank-UI-Flutter-master (profile mode)",
+            "cwd": "scavange\\Bank-UI-Flutter-master",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "Bank-UI-Flutter-master (release mode)",
+            "cwd": "scavange\\Bank-UI-Flutter-master",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

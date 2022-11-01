@@ -51,35 +51,37 @@ def sms(number, message):  # fast2sms.com
 
 
 # RECONFIGURATION OF SMS MODULE
-def mail(sendto, content, subject="do NOT reply : system generated mail"):
-    # app password for this device ckeyexkwnflrpjbb
-    from_address = "vodkabbby@gmail.com"
-    to_address = sendto
-
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = subject
-    msg['From'] = from_address
-    msg['To'] = to_address
-
-    # Create the message (HTML).
-    text = content
-
-    # Record the MIME type - text/html.
-    part1 = MIMEText(text)
-    # Attach parts into message container
-    msg.attach(part1)
-
+def mail(sendtoList, content, subject="do NOT reply : system generated mail"):
     # Credentials
     username = 'vodkabbby@gmail.com'
     password = 'ckeyexkwnflrpjbb'
-
-    # Sending the email
     # note - this smtp config worked for me, I found it googling around, you may have to tweak the # (587) to get yours to work
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
     server.login(username, password)
-    server.sendmail(from_address, to_address, msg.as_string())
+
+    # app password for this device ckeyexkwnflrpjbb
+    from_address = "vodkabbby@gmail.com"
+    for x in sendtoList:
+        to_address = x
+
+        msg = MIMEMultipart('alternative')
+        msg['Subject'] = subject
+        msg['From'] = from_address
+        msg['To'] = to_address
+
+        # Create the message (HTML).
+        text = content
+
+        # Record the MIME type - text/html.
+        part1 = MIMEText(text)
+        # Attach parts into message container
+        msg.attach(part1)
+
+        # Sending the email
+
+        server.sendmail(from_address, to_address, msg.as_string())
     server.quit()
 
 
@@ -179,4 +181,3 @@ def RSAverify(message, signature, key):
 #     print("successfully verified signature")
 # else:
 #     print("signature didnt match")
-
