@@ -1,0 +1,1 @@
+def compress(location):

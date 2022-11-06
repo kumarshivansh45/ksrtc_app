@@ -7,6 +7,198 @@ from utils import rand_key
 from database import Base
 
 
+class Data_conf(Base):
+    __tablename__ = "data_conf"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    table_name = Column(String, nullable=False, unique=True)
+    data_name = Column(String, nullable=False, unique=False)
+    stored_at = Column(String, nullable=False, unique=False)
+    encrypted_on_device = Column(String, nullable=False, unique=False)
+    encrypted_on_server = Column(String, nullable=False, unique=False)
+    encrypted_while_transmission = Column(String, nullable=False, unique=False)
+    compressed_on_device = Column(String, nullable=False, unique=False)
+    compressed_on_server = Column(String, nullable=False, unique=False)
+    compressed_on_transmission = Column(String, nullable=False, unique=False)
+    Who_can_read = Column(String, nullable=False, unique=False)
+    Who_can_write = Column(String, nullable=False, unique=False)
+    Who_can_update = Column(String, nullable=False, unique=False)
+    who_can_delete = Column(String, nullable=False, unique=False)
+    # created_updated_date =  NEED TO SET WITH IST
+    create_updated_request_date = Column(String, nullable=False, unique=False)
+    backed_up_or_not = Column(String, nullable=False, unique=False)
+    expirey_duration = Column(String, nullable=False, unique=False)
+    # schema before database query in seperate folder , might be unnecessary
+    max_length_charecter = Column(String, nullable=False, unique=False)
+    user_specific = Column(String, nullable=False, unique=False)
+    comments = Column(String, nullable=False, unique=False)
+
+
+class Language(Base):
+    __tablename__ = "language"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    alias = Column(String, unique=True, nullable=False)
+    english = Column(String, unique=False, nullable=False)
+    kannada = Column(String, unique=False, nullable=False)
+    details = Column(String, unique=False, nullable=False)
+
+
+class Messages(Base):
+    __tablename__ = "messages"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    alias = Column(String, unique=True, nullable=False)
+    content = Column(String, unique=False, nullable=False)
+    details = Column(String, unique=False, nullable=False)
+
+
+class Articles(Base):
+    __tablename__ = "articles"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    alias = Column(String, unique=True, nullable=False)
+    content = Column(String, unique=False, nullable=False)
+    viewed = Column(String, unique=False, nullable=False)
+    expanded = Column(String, unique=False, nullable=False)
+    full_read = Column(String, unique=False, nullable=False)
+    details = Column(String, unique=False, nullable=False)
+
+
+class Surveys(Base):
+    __tablename__ = "surveys"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    alias = Column(String, unique=True, nullable=False)
+    viewed = Column(String, unique=False, nullable=False)
+    answered = Column(String, unique=False, nullable=False)
+    skipped = Column(String, unique=False, nullable=False)
+    pushable_or_not = Column(String, unique=False, nullable=False)
+    content = Column(String, unique=False, nullable=False)
+    details = Column(String, unique=False, nullable=False)
+
+
+class Ads(Base):
+    __tablename__ = "ads"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    alias = Column(String, unique=True, nullable=False)
+    viewed = Column(String, unique=False, nullable=False)
+    clicked = Column(String, unique=False, nullable=False)
+    skipped = Column(String, unique=False, nullable=False)
+    pushable_or_not = Column(String, unique=False, nullable=False)
+    content = Column(String, unique=False, nullable=False)
+    details = Column(String, unique=False, nullable=False)
+
+
+class Function_conf(Base):
+    __tablename__ = "function_conf"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    fxn_name = Column(String, unique=True, nullable=False)
+    exe_permission = Column(String, nullable=False, unique=False)
+    # Request n response body schema in a seperate folder
+    # code,message,handling_fxn
+    error_codes_messages = Column(String, nullable=False, unique=False)
+    alert_functions = Column(String, nullable=False,
+                             unique=False)  # when done send sms,etc
+    public_or_private = Column(
+        String, nullable=False, unique=False)  # for api's
+    rate_limit = Column(String, nullable=False, unique=False)
+    jail_time = Column(String, nullable=False, unique=False)
+    max_calls_allowed = Column(String, nullable=False, unique=False)
+    # immidiate,background,scheduled
+    priority_class = Column(String, nullable=False, unique=False)
+    comments = Column(String, nullable=False, unique=False)
+
+
+class Forensics(Base):
+    __tablename__ = "forensics"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    fxn_name = Column(String, unique=True, nullable=False)
+    exe_by = Column(String, nullable=False, unique=False)
+    # executed time in IST
+    inputs = Column(String, nullable=False, unique=False)
+    output = Column(String, nullable=False, unique=False)
+    requested_time = Column(String, nullable=False, unique=False)
+    # ip address,mac address
+    security_data = Column(String, nullable=False, unique=False)
+
+
+class System_conf(Base):
+    __tablename__ = "system_conf"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    key = Column(String, unique=True, nullable=False)
+    value = Column(String, unique=False, nullable=False)
+    comments = Column(String, nullable=False, unique=False)
+
+
+class Universal_app_data(Base):
+    __tablename__ = "universal app data"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    key = Column(String, unique=True, nullable=False)
+    value = Column(String, unique=False, nullable=False)
+    comments = Column(String, nullable=False, unique=False)
+
+
+class User(Base):
+    __tablename__ = "users"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    name = Column(String, nullable=False,
+                  unique=False)
+    email = Column(String, nullable=False, unique=True)
+    phone = Column(String, nullable=False, unique=True)
+    password = Column(String, nullable=False, unique=False)
+    details = Column(String, nullable=True, unique=False)
+    group = Column(String, nullable=False, server_default="user")
+    jwt = Column(String, nullable=False, unique=True)
+    journey = Column(String, nullable=False, unique=True)
+    language = Column(String, nullable=False, unique=True)
+
+
+class Buses(Base):
+    __tablename__ = "buses"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    alias = Column(String, nullable=False, unique=True)
+    num_plate = Column(String, nullable=False, unique=True)
+    details = Column(String, nullable=True, server_default=None, unique=True)
+
+
+class Stoppages(Base):
+    __tablename__ = "stoppages"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    alias = Column(String, nullable=False, unique=True)
+    coordinates = Column(String, nullable=False, unique=True)
+    details = Column(String, nullable=True, server_default=None, unique=True)
+
+
+class Trip_routes(Base):
+    __tablename__ = "trip_routes"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    alias = Column(String, nullable=False, unique=True)
+    route = Column(String, nullable=False, unique=True)
+    timestamps = Column(String, nullable=False, unique=True)
+    details = Column(String, nullable=True, server_default=None, unique=True)
+
+
+class Journey(Base):
+    __tablename__ = "journey"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    alias = Column(String, nullable=False, unique=True)
+    # driver,conductor,passenger
+    passengers = Column(String, nullable=False, unique=True)
+    journey_date = Column(String, nullable=False, unique=True)
+    boarding_stop = Column(String, nullable=False, unique=True)
+    endingColumn = Column(String, nullable=False, unique=True)
+    transaction_id = Column(String, nullable=False, unique=True)
+    fare = Column(String, nullable=False, unique=True)
+    other_details = Column(String, nullable=False, unique=True)
+    details = Column(String, nullable=False, unique=True)
+
+
+class Tracking(Base):
+    __tablename__ = "tracking"
+    uid = Column(Integer, primary_key=True, nullable=False)
+    journey = Column(String, ForeignKey(
+        "journey.alias", ondelete='CASCADE'), nullable=False, unique=True)
+    stops_crossed = Column(String, nullable=False, unique=True)
+    time_delay = Column(String, nullable=False, unique=True)
+    distance_from_last_stop = Column(String, nullable=False, unique=True)
+
+
 # class Post(Base):
 #     __tablename__ = "posts"
 
@@ -22,60 +214,7 @@ from database import Base
 #     owner = relationship("User")
 
 
-class User(Base):
-    __tablename__ = "users"
-    # autogenerated primary key
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(String, nullable=False, unique=False)  # name of the user
-    email = Column(String, nullable=False, unique=True)  # email id of the user
-    # phone number of the user
-    phone = Column(String, nullable=False, unique=True)
-    password = Column(String, nullable=False)  # password by the user
-    created_by = Column(String, nullable=False, unique=False)  # created by
-    # id_type = Column(String, nullable=True)
-    # id_number = Column(String, nullable=True)
-    # extra details -- configurable
-    details = Column(String, nullable=True, unique=False)
-    created_at = Column(TIMESTAMP(timezone=True),  # automatic time of creation of user
-                        nullable=False, server_default=text('now()'))
-    # group of user , for permissions
-    group = Column(String, nullable=False, server_default="user")
-
-
-class Buses(Base):
-    __tablename__ = "buses"
-    id = Column(Integer, primary_key=True, nullable=False)
-    alias = Column(String, nullable=False, unique=True)
-    num_plate = Column(String, nullable=False, unique=True)
-    details = Column(String, nullable=True, server_default=None, unique=True)
-    created_by = Column(String, nullable=False, unique=False)  # created by
-    created_at = Column(TIMESTAMP(timezone=True),
-                        nullable=False, server_default=text('now()'))
-
-
-class Stoppages(Base):
-    __tablename__ = "stoppages"
-    id = Column(Integer, primary_key=True, nullable=False)
-    alias = Column(String, nullable=False, unique=True)
-    coordinates = Column(String, nullable=False, unique=True)
-    details = Column(String, nullable=True, server_default=None, unique=True)
-    created_by = Column(String, nullable=False, unique=False)  # created by
-    created_at = Column(TIMESTAMP(timezone=True),
-                        nullable=False, server_default=text('now()'))
-
-
-class Trip_routes(Base):
-    __tablename__ = "TripRoutes"
-    id = Column(Integer, primary_key=True, nullable=False)
-    # alias = Column(String, nullable=False , unique=True)
-
-    # route = Column(String, nullable=False, unique=True)
-    # details = Column(String, nullable=True, server_default=None, unique=True)
-    # created_by = Column(String,nullable = False, unique=False) # created by
-    # created_at = Column(TIMESTAMP(timezone=True),
-    #                     nullable=False, server_default=text('now()'))
-
-
+# class conduc
 # class VarTokens(Base):
 #     __tablename__ = "var_tokens"
 #     id = Column(Integer, primary_key=True, nullable=False)
