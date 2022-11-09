@@ -25,7 +25,7 @@ class _BottomBarState extends State<BottomBar> {
   static final List<Widget> _widgetOptions = <Widget>[
     Homescreen(),
     Adcard(),
-    WebViewTest(),
+    Website(), //ebViewTestW
     DialogExample(), //Tracking()
   ];
 

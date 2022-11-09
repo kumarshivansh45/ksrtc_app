@@ -27,31 +27,43 @@ import json
 
 ###############  FORMAT CHECKER  #################
 allowed_fields = ["apple", "banana", "orange"]
+alert_list = []
+
 work_book = openpyxl.load_workbook("./tests.xlsx")
 active_cell = work_book.active
 active_list = list(active_cell)
 
-active_row = []
-active_col = []
-active_val = []
-active_all = []
+active_cell_row = []
+active_cell_col = []
+active_cell_val = []
+active_cell_all = []
 
 for x in active_list:
     for y in x:
-        active_row.append(y.row)
-        active_col.append(y.column)
-        active_val.append(y.value)
-        active_all.append([y.row, y.column, y.value])
+        if y.value != None:
+            active_cell_row.append(y.row)
+            active_cell_col.append(y.column)
+            active_cell_val.append(y.value)
+            active_cell_all.append([y.row, y.column, y.value])
 
 
+# print(type(active_cell_row[4]))
 present_fields = []
-not_null_cells = []
-first_non_empty_row = None
-for x in active_all:
-    if x[2]!=None:
-        not_null_cells.append(x)
-        first_non_empty_row = min(not_null_cells[0])
-    for x in not_null_cells:
-        if x[0]==first_non_empty_row:
-            present_fields.append(x[2])
-print(present_fields)
+first_non_empty_row = min(active_cell_row)
+last_non_empty_row = max(active_cell_row)
+first_non_empty_column = min(active_cell_col)
+last_non_empty_column = max(active_cell_col)
+
+# print(first_non_empty_row)
+for x in active_cell_all:
+    if x[0] == first_non_empty_row:
+        present_fields.append((x[0], x[1], x[2]))
+print(f"present_fields : {present_fields}")
+print(f"first_non_empty_row : {first_non_empty_row}")
+print(f"last_non_empty_row :{last_non_empty_row}")
+print(f"first_non_empty_column :{first_non_empty_column}")
+print(f"last_non_empty_column :{last_non_empty_column}")
+if allowed_fields != present_fields:
+    alert_list.append(
+        ("improper file structuring , plz download sample file and try again", "alert"))
+    # RETURN

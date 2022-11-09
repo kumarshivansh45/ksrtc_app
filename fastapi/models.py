@@ -30,59 +30,59 @@ class Data_conf(Base):
     # schema before database query in seperate folder , might be unnecessary
     max_length_charecter = Column(String, nullable=False, unique=False)
     user_specific = Column(String, nullable=False, unique=False)
-    comments = Column(String, nullable=False, unique=False)
+    comments = Column(String, nullable=True, unique=False)
 
 
 class Language(Base):
     __tablename__ = "language"
     uid = Column(Integer, primary_key=True, nullable=False)
     alias = Column(String, unique=True, nullable=False)
-    english = Column(String, unique=False, nullable=False)
-    kannada = Column(String, unique=False, nullable=False)
-    details = Column(String, unique=False, nullable=False)
+    english = Column(String, unique=False, nullable=True)
+    kannada = Column(String, unique=False, nullable=True)
+    details = Column(String, unique=False, nullable=True)
 
 
 class Messages(Base):
     __tablename__ = "messages"
     uid = Column(Integer, primary_key=True, nullable=False)
     alias = Column(String, unique=True, nullable=False)
-    content = Column(String, unique=False, nullable=False)
-    details = Column(String, unique=False, nullable=False)
+    content = Column(String, unique=False, nullable=True)
+    details = Column(String, unique=False, nullable=True)
 
 
 class Articles(Base):
     __tablename__ = "articles"
     uid = Column(Integer, primary_key=True, nullable=False)
     alias = Column(String, unique=True, nullable=False)
-    content = Column(String, unique=False, nullable=False)
-    viewed = Column(String, unique=False, nullable=False)
-    expanded = Column(String, unique=False, nullable=False)
-    full_read = Column(String, unique=False, nullable=False)
-    details = Column(String, unique=False, nullable=False)
+    content = Column(String, unique=False, nullable=True)
+    viewed = Column(String, unique=False, nullable=True)
+    expanded = Column(String, unique=False, nullable=True)
+    full_read = Column(String, unique=False, nullable=True)
+    details = Column(String, unique=False, nullable=True)
 
 
 class Surveys(Base):
     __tablename__ = "surveys"
     uid = Column(Integer, primary_key=True, nullable=False)
     alias = Column(String, unique=True, nullable=False)
-    viewed = Column(String, unique=False, nullable=False)
-    answered = Column(String, unique=False, nullable=False)
-    skipped = Column(String, unique=False, nullable=False)
-    pushable_or_not = Column(String, unique=False, nullable=False)
-    content = Column(String, unique=False, nullable=False)
-    details = Column(String, unique=False, nullable=False)
+    viewed = Column(String, unique=False, nullable=True)
+    answered = Column(String, unique=False, nullable=True)
+    skipped = Column(String, unique=False, nullable=True)
+    pushable_or_not = Column(String, unique=False, nullable=True)
+    content = Column(String, unique=False, nullable=True)
+    details = Column(String, unique=False, nullable=True)
 
 
 class Ads(Base):
     __tablename__ = "ads"
     uid = Column(Integer, primary_key=True, nullable=False)
     alias = Column(String, unique=True, nullable=False)
-    viewed = Column(String, unique=False, nullable=False)
-    clicked = Column(String, unique=False, nullable=False)
-    skipped = Column(String, unique=False, nullable=False)
-    pushable_or_not = Column(String, unique=False, nullable=False)
-    content = Column(String, unique=False, nullable=False)
-    details = Column(String, unique=False, nullable=False)
+    viewed = Column(String, unique=False, nullable=True)
+    clicked = Column(String, unique=False, nullable=True)
+    skipped = Column(String, unique=False, nullable=True)
+    pushable_or_not = Column(String, unique=False, nullable=True)
+    content = Column(String, unique=False, nullable=True)
+    details = Column(String, unique=False, nullable=True)
 
 
 class Function_conf(Base):
@@ -130,23 +130,24 @@ class Universal_app_data(Base):
     __tablename__ = "universal app data"
     uid = Column(Integer, primary_key=True, nullable=False)
     key = Column(String, unique=True, nullable=False)
-    value = Column(String, unique=False, nullable=False)
-    comments = Column(String, nullable=False, unique=False)
+    value = Column(String, unique=False, nullable=True)
+    comments = Column(String, nullable=True, unique=False)
 
 
 class User(Base):
     __tablename__ = "users"
     uid = Column(Integer, primary_key=True, nullable=False)
-    name = Column(String, nullable=False,
-                  unique=False)
+    user_name = Column(String, nullable=False,
+                       unique=True)
     email = Column(String, nullable=False, unique=True)
     phone = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False, unique=False)
     details = Column(String, nullable=True, unique=False)
-    group = Column(String, nullable=False, server_default="user")
-    jwt = Column(String, nullable=False, unique=True)
-    journey = Column(String, nullable=False, unique=True)
-    language = Column(String, nullable=False, unique=True)
+    group = Column(String, nullable=False, unique=False, server_default="user")
+    jwt = Column(String, nullable=True, unique=False)
+    journey = Column(String, nullable=True, unique=False)
+    language = Column(String, nullable=False, unique=False)
+# change nullables to true , idiot
 
 
 class Buses(Base):
@@ -154,24 +155,24 @@ class Buses(Base):
     uid = Column(Integer, primary_key=True, nullable=False)
     alias = Column(String, nullable=False, unique=True)
     num_plate = Column(String, nullable=False, unique=True)
-    details = Column(String, nullable=True, server_default=None, unique=True)
+    details = Column(String, nullable=True, unique=False)
 
 
 class Stoppages(Base):
     __tablename__ = "stoppages"
     uid = Column(Integer, primary_key=True, nullable=False)
     alias = Column(String, nullable=False, unique=True)
-    coordinates = Column(String, nullable=False, unique=True)
-    details = Column(String, nullable=True, server_default=None, unique=True)
+    coordinates = Column(String, nullable=True, unique=False)
+    details = Column(String, nullable=True, unique=False)
 
 
 class Trip_routes(Base):
     __tablename__ = "trip_routes"
     uid = Column(Integer, primary_key=True, nullable=False)
     alias = Column(String, nullable=False, unique=True)
-    route = Column(String, nullable=False, unique=True)
-    timestamps = Column(String, nullable=False, unique=True)
-    details = Column(String, nullable=True, server_default=None, unique=True)
+    route = Column(String, nullable=True, unique=False)
+    timestamps = Column(String, nullable=True, unique=False)
+    details = Column(String, nullable=True, unique=False)
 
 
 class Journey(Base):
@@ -179,14 +180,14 @@ class Journey(Base):
     uid = Column(Integer, primary_key=True, nullable=False)
     alias = Column(String, nullable=False, unique=True)
     # driver,conductor,passenger
-    passengers = Column(String, nullable=False, unique=True)
-    journey_date = Column(String, nullable=False, unique=True)
-    boarding_stop = Column(String, nullable=False, unique=True)
-    endingColumn = Column(String, nullable=False, unique=True)
-    transaction_id = Column(String, nullable=False, unique=True)
-    fare = Column(String, nullable=False, unique=True)
+    passengers = Column(String, nullable=True, unique=False)
+    journey_date = Column(String, nullable=True, unique=False)
+    boarding_stop = Column(String, nullable=True, unique=False)
+    endingColumn = Column(String, nullable=True, unique=False)
+    transaction_id = Column(String, nullable=True, unique=False)
+    fare = Column(String, nullable=True, unique=False)
     other_details = Column(String, nullable=False, unique=True)
-    details = Column(String, nullable=False, unique=True)
+    details = Column(String, nullable=True, unique=False)
 
 
 class Tracking(Base):
@@ -194,9 +195,9 @@ class Tracking(Base):
     uid = Column(Integer, primary_key=True, nullable=False)
     journey = Column(String, ForeignKey(
         "journey.alias", ondelete='CASCADE'), nullable=False, unique=True)
-    stops_crossed = Column(String, nullable=False, unique=True)
-    time_delay = Column(String, nullable=False, unique=True)
-    distance_from_last_stop = Column(String, nullable=False, unique=True)
+    stops_crossed = Column(String, nullable=True, unique=False)
+    time_delay = Column(String, nullable=True, unique=False)
+    distance_from_last_stop = Column(String, nullable=True, unique=False)
 
 
 # class Post(Base):

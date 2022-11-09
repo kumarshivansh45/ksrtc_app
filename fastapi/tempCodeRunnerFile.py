@@ -1,7 +1,0 @@
-RSAgenerateKeys()
-publicKey, privateKey = RSAloadKeys()
-message = input('Write your message here:')
-ciphertext = RSAencrypt(message, publicKey)
-print(f"ciphertext : {ciphertext}")
-plaintext = RSAdecrypt(ciphertext,privateKey)
-print(f"plaintext:{plaintext}")

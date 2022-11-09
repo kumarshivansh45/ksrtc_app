@@ -14,3 +14,10 @@ https://www.youtube.com/watch?v=FS6JPhYtpo8&ab_channel=CodingCrashkurse   #Task 
 https://www.youtube.com/watch?v=mArvXzzvBMs&ab_channel=EBISYS      #Folium map designing 
 
 https://www.youtube.com/watch?v=55D8Lu_Vp_I&ab_channel=ProgrammingAddict  #web view in flutter
+https://stackoverflow.com/questions/52411168/how-to-get-device-ip-in-dart-flutter # ip address
+https://towardsdatascience.com/visualization-in-python-finding-routes-between-points-2d97d4881996 #shortest path finder
+https://stackoverflow.com/questions/45031499/how-to-get-unique-device-id-in-flutter  #device identifiers
+https://www.youtube.com/watch?v=LdM3N7dYrVc&ab_channel=TechWithVP  #get mac address
+https://www.arcgis.com/home/group.html?id=66d66956ab444ae89e8265f008704d4b&view=list&focus=layers-weblayers-features#content
+
+/users/id?uid=uid&name=name&email=email&phone=phone&password=pass&details=detail&group=group&jwt=jwt&journey=journey&language=lang

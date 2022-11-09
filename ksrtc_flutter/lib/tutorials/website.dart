@@ -18,7 +18,7 @@ class _WebsiteState extends State<Website> {
   Widget build(BuildContext context) {
     return WebView(
       javascriptMode: JavascriptMode.unrestricted,
-      initialUrl: "www.amazon.in/",
+      initialUrl: "http://10.0.2.2:8000/docs/",
       onWebViewCreated: (controller) {
         // this.controller = controller;
       },
@@ -49,7 +49,6 @@ class _WebViewTestState extends State<WebViewTest> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        
         child: WebView(
           initialUrl: '',
           javascriptMode: JavascriptMode.unrestricted,
