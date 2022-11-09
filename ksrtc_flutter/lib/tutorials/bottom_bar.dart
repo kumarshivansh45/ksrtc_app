@@ -2,12 +2,16 @@
 import "package:flutter/cupertino.dart";
 import 'package:flutter/material.dart';
 import "package:fluentui_icons/fluentui_icons.dart";
+import 'package:ksrtc_flutter/tutorials/device_data.dart';
 import '../tutorials/homescreen.dart';
 import '../tutorials/track.dart';
 import "../tutorials/widgets.dart";
 import "../tutorials/styles.dart";
 import "../tutorials/utils.dart";
 import "../tutorials/drawer.dart";
+import '../tutorials/device_data.dart';
+import "../tutorials/popups.dart";
+import "../tutorials/website.dart";
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -21,8 +25,8 @@ class _BottomBarState extends State<BottomBar> {
   static final List<Widget> _widgetOptions = <Widget>[
     Homescreen(),
     Adcard(),
-    Article(),
-    Track(),
+    WebViewTest(),
+    DialogExample(), //Tracking()
   ];
 
   void set_index(int index) {
@@ -43,15 +47,13 @@ class _BottomBarState extends State<BottomBar> {
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('Drawer Header'),
+              child: Text(
+                "welcome ",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
             ),
             ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
+              leading: Icon(Icons.access_time_filled_outlined),
               title: const Text('Item 2'),
               onTap: () {
                 Navigator.pop(context);
@@ -76,67 +78,11 @@ class _BottomBarState extends State<BottomBar> {
               },
             ),
             ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
+              subtitle: Column(children: [
+                Row(children: [
+                  ElevatedButton(onPressed: () {}, child: Text("Logout"))
+                ])
+              ]),
               onTap: () {
                 Navigator.pop(context);
               },
@@ -145,13 +91,18 @@ class _BottomBarState extends State<BottomBar> {
         ),
       ),
       appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.yellow),
+          // leading: Drawer(),
           actions: [
             Container(
               width: 50,
               margin: EdgeInsets.only(right: 10),
               child: InkWell(
                 customBorder: CircleBorder(),
-                child: Icon(Icons.notifications),
+                child: Icon(
+                  Icons.notifications,
+                  color: Colors.yellow,
+                ),
                 onTap: () {
                   print("notification clicked");
                 },
@@ -163,20 +114,23 @@ class _BottomBarState extends State<BottomBar> {
           toolbarHeight: 70,
           title: Container(
               child: Row(children: [
-            Container(
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.white)),
-                margin: EdgeInsets.all(10),
-                height: kToolbarHeight - 15,
-                child: Image.asset(
-                  "./resources/bird_light.png",
-                )),
+            InkWell(
+              // onTap: () ,
+              child: Container(
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.yellow)),
+                  margin: EdgeInsets.all(10),
+                  height: kToolbarHeight - 15,
+                  child: Image.asset(
+                    "./resources/bird_yellow_new.png",
+                  )),
+            ),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Container(
                 child: Text(
                   "Awatar 2.0",
                   style: Styles.headline1.copyWith(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.yellow, fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
@@ -199,16 +153,16 @@ class _BottomBarState extends State<BottomBar> {
           onTap: set_index,
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(FluentSystemIcons.ic_fluent_home_filled),
+                icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
                 label: "home"),
             BottomNavigationBarItem(
                 icon: Icon(FluentSystemIcons.ic_fluent_ticket_filled),
                 label: "ticket"),
             BottomNavigationBarItem(
-                icon: Icon(FluentSystemIcons.ic_fluent_settings_filled),
-                label: "settings"),
+                icon: Icon(FluentSystemIcons.ic_fluent_news_regular),
+                label: "articles"),
             BottomNavigationBarItem(
-                icon: Icon(FluentSystemIcons.ic_fluent_my_location_filled),
+                icon: Icon(FluentSystemIcons.ic_fluent_my_location_regular),
                 label: "track"),
           ]),
     );

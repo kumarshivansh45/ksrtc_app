@@ -16,7 +16,18 @@ class Styles {
       TextStyle(fontSize: 21, color: textColor, fontWeight: FontWeight.bold);
   static TextStyle headline3 =
       TextStyle(fontSize: 17, color: textColor, fontWeight: FontWeight.w500);
-  static TextStyle headline4 =
-      TextStyle(fontSize: 14, color: Colors.grey.shade500, fontWeight: FontWeight.w500);
-      
+  static TextStyle headline4 = TextStyle(
+      fontSize: 14, color: Colors.grey.shade500, fontWeight: FontWeight.w500);
+}
+
+
+class CommonStyle{
+  static InputDecoration textFieldStyle({String labelTextStr="",String hintTextStr=""}) {return InputDecoration(
+    contentPadding: EdgeInsets.all(12),
+    labelText: labelTextStr,
+    hintText:hintTextStr,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+  );}
 }
